@@ -2,7 +2,6 @@
 	<h2><?php echo __('Knowyournumbers'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('customerId'); ?></th>
 			<th><?php echo $this->Paginator->sort('chwId'); ?></th>
 			<th><?php echo $this->Paginator->sort('time'); ?></th>
@@ -12,11 +11,11 @@
 			<th><?php echo $this->Paginator->sort('weight'); ?></th>
 			<th><?php echo $this->Paginator->sort('systolic'); ?></th>
 			<th><?php echo $this->Paginator->sort('diastolic'); ?></th>
+			<th><?php echo __('bmi'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($knowyournumbers as $knowyournumber): ?>
 	<tr>
-		<td><?php echo h($knowyournumber['Knowyournumber']['id']); ?>&nbsp;</td>
 		<td><?php echo h($knowyournumber['Knowyournumber']['customerId']); ?>&nbsp;</td>
 		<td><?php echo h($knowyournumber['Knowyournumber']['chwId']); ?>&nbsp;</td>
 		<td><?php echo h($knowyournumber['Knowyournumber']['time']); ?>&nbsp;</td>
@@ -26,6 +25,18 @@
 		<td><?php echo h($knowyournumber['Knowyournumber']['weight']); ?>&nbsp;</td>
 		<td><?php echo h($knowyournumber['Knowyournumber']['systolic']); ?>&nbsp;</td>
 		<td><?php echo h($knowyournumber['Knowyournumber']['diastolic']); ?>&nbsp;</td>
+		<td>
+			<?php 
+				// Get the weight & height from the internal database
+				$mass = $knowyournumber['Knowyournumber']['weight'];
+				//echo h($mass);
+				$height = $knowyournumber['Knowyournumber']['height'];
+				//echo h($height);
+				// Call the helper co-function to compute the BMI
+				$bmi = $this->CoFunctions->computeBMI($mass, $height);
+				echo h($bmi); //print computated BMI value
+			?>
+		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $knowyournumber['Knowyournumber']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $knowyournumber['Knowyournumber']['id'])); ?>
