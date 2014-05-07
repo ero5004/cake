@@ -9,6 +9,12 @@ App::uses('AppController', 'Controller');
 class KnowyournumbersController extends AppController {
 
 /**
+ * This array lists the helpers that the controller knows of...
+ *
+ */
+	public $helpers = array('CoFunctions');
+
+/**
  * Components
  *
  * @var array
