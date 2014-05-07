@@ -51,6 +51,20 @@
 			<?php echo h($knowyournumber['Knowyournumber']['diastolic']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('BMI'); ?></dt>
+		<dd>
+			<?php 
+				// Get the weight & height from the internal database
+				$mass = $knowyournumber['Knowyournumber']['weight'];
+				//echo h($mass);
+				$height = $knowyournumber['Knowyournumber']['height'];
+				//echo h($height);
+				// Call the helper co-function to compute the BMI
+				$bmi = $this->CoFunctions->computeBMI($mass, $height);
+				echo h($bmi); //print computated BMI value
+			?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">
