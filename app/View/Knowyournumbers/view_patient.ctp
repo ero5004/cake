@@ -1,6 +1,9 @@
+
+<?= $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false); ?>
+
 <div class="knowyournumbers view">
 <h2><?php echo __('Knowyournumber'); ?></h2>
-	<dl>
+	<!--<dl>
 		<dt><?php echo __('CustomerId'); ?></dt>
 		<dd>
 			<?php echo h($knowyournumber['Knowyournumber']['customerId']); ?>
@@ -50,7 +53,13 @@
 			?>
 			&nbsp;
 		</dd>
-	</dl>
+	</dl>-->
+	<div id='chart_div'>
+		<?php
+			$chart->div('chart_div');
+			$this->GoogleCharts->createJsChart($chart); 
+		?>
+	</div>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
