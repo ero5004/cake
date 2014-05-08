@@ -12,7 +12,7 @@ class KnowyournumbersController extends AppController {
  * This array lists the helpers that the controller knows of...
  *
  */
-	public $helpers = array('CoFunctions');
+	public $helpers = array('GoogleMap','CoFunctions');
 
 /**
  * Components
@@ -46,6 +46,12 @@ class KnowyournumbersController extends AppController {
 		$this->set('knowyournumber', $this->Knowyournumber->find('first', $options));
 	}
 
+	
+	public function viewPatient($patientId = null) {
+		$options = array('conditions' => array('Knowyournumber.' . $this->Knowyournumber->weight => $patientId));
+		$this->set('patientRecords', $this->Knowyournumber->find('all', $options));
+	}
+	
 /**
  * add method
  *
@@ -107,4 +113,10 @@ class KnowyournumbersController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+	
+	public function consultationMap($chwId = null) {
+		$this->Knowyournumber->recursive = 0;
+		$this->set('knowyournumbers', $this->Paginator->paginate());
+	}
+	
 }
