@@ -30,6 +30,8 @@ class KnowyournumbersController extends AppController {
 	public function index() {
 		$this->Knowyournumber->recursive = 0;
 		$this->set('knowyournumbers', $this->Paginator->paginate());
+		
+		$this->set('title_for_layout', 'All Consultations');
 	}
 
 /**
@@ -64,10 +66,20 @@ class KnowyournumbersController extends AppController {
 		$options = array('conditions' => array('Knowyournumber.customerId' => $patientId));
 		$patientRecords = $this->Knowyournumber->find('all', $options);
 		
-		$chart = new GoogleCharts();
-		$chart->type("LineChart");
-		$chart->options(array('title' => "BMI over time"));
-		$chart->columns(array('time' => array('type' => 'string', 'label' => 'Time'), 'bmi' => array('type' => 'number', 'label' => 'BMI')));
+		$chartBmi = new GoogleCharts();
+		$chartBmi->type("LineChart");
+		$chartBmi->options(array('title' => "BMI over time"));
+		$chartBmi->columns(array('time' => array('type' => 'string', 'label' => 'Time'), 
+			'bmi' => array('type' => 'number', 'label' => 'BMI')
+			));
+			
+		$chartBp = new GoogleCharts();
+		$chartBp->type("LineChart");
+		$chartBp->options(array('title' => "Blood Pressure over time"));
+		$chartBp->columns(array('time' => array('type' => 'string', 'label' => 'Time'), 
+			'systolic' => array('type' => 'number', 'label' => 'BP - systolic'),
+			'diastolic' => array('type' => 'number', 'label' => 'BP - diastolic')
+			));
 		
 		
 		foreach ($patientRecords as $patientRecord)
@@ -75,12 +87,17 @@ class KnowyournumbersController extends AppController {
 			$time = $patientRecord['Knowyournumber']['time'];
 			$height = $patientRecord['Knowyournumber']['height'];
 			$weight = $patientRecord['Knowyournumber']['weight'];
+			$systolic = $patientRecord['Knowyournumber']['systolic'];
+			$diastolic = $patientRecord['Knowyournumber']['diastolic'];
 			$bmi = $this->computeBMI($weight, $height);
-			$chart->addRow(array('time' => $time, 'bmi' => $bmi));
+			$chartBmi->addRow(array('time' => $time, 'bmi' => $bmi));
+			$chartBp->addRow(array('time' => $time, 'systolic' => $systolic, 'diastolic' => $diastolic));
 		}
 		
-		$this->set(compact('chart'));
+		$this->set('title_for_layout', 'Customer Info');
 		
+		$this->set(compact('chartBmi'));
+		$this->set(compact('chartBp'));		
 		$this->set('patientRecords', $patientRecords);
 	}
 	
@@ -90,6 +107,7 @@ class KnowyournumbersController extends AppController {
  * @return void
  */
 	public function add() {
+		$this->set('title_for_layout', 'Add New Consultation');
 		if ($this->request->is('post')) {
 			$this->Knowyournumber->create();
 			if ($this->Knowyournumber->save($this->request->data)) {
@@ -109,6 +127,7 @@ class KnowyournumbersController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->set('title_for_layout', 'Edit Consultation');
 		if (!$this->Knowyournumber->exists($id)) {
 			throw new NotFoundException(__('Invalid knowyournumber'));
 		}
@@ -133,6 +152,7 @@ class KnowyournumbersController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		$this->set('title_for_layout', 'Delete Consultation');
 		$this->Knowyournumber->id = $id;
 		if (!$this->Knowyournumber->exists()) {
 			throw new NotFoundException(__('Invalid knowyournumber'));
@@ -147,6 +167,7 @@ class KnowyournumbersController extends AppController {
 	}
 	
 	public function consultationMap($chwId = null) {
+		$this->set('title_for_layout', 'Map of Consultations');
 		$options = array('conditions' => array('Knowyournumber.chwId' => $chwId));
 		$this->set('chwConsultations', $this->Knowyournumber->find('all', $options));
 	}

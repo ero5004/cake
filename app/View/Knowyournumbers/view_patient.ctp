@@ -54,18 +54,22 @@
 			&nbsp;
 		</dd>
 	</dl>-->
-	<div id='chart_div'>
+	<div id='chartBmi_div'>
 		<?php
-			$chart->div('chart_div');
-			$this->GoogleCharts->createJsChart($chart); 
+			$chartBmi->div('chartBmi_div');
+			$this->GoogleCharts->createJsChart($chartBmi); 
+		?>
+	</div>
+	<div id='chartBp_div'>
+		<?php
+			$chartBp->div('chartBp_div');
+			$this->GoogleCharts->createJsChart($chartBp); 
 		?>
 	</div>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Knowyournumber'), array('action' => 'edit', $knowyournumber['Knowyournumber']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Knowyournumber'), array('action' => 'delete', $knowyournumber['Knowyournumber']['id']), null, __('Are you sure you want to delete # %s?', $knowyournumber['Knowyournumber']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Knowyournumbers'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Knowyournumber'), array('action' => 'add')); ?> </li>
 	</ul>
