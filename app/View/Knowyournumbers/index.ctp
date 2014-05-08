@@ -15,7 +15,7 @@
 	<?php foreach ($knowyournumbers as $knowyournumber): ?>
 	<tr>
 		<td><?php echo h($knowyournumber['Knowyournumber']['customerId']); ?>&nbsp;</td>
-		<td><?php echo h($knowyournumber['Knowyournumber']['chwId']); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link(__($knowyournumber['Knowyournumber']['chwId']), array('action' => 'consultationMap', $knowyournumber['Knowyournumber']['chwId'])) ?>&nbsp;</td>
 		<td><?php echo h($knowyournumber['Knowyournumber']['time']); ?>&nbsp;</td>
 		<td><?php echo h($knowyournumber['Knowyournumber']['height']); ?>&nbsp;</td>
 		<td><?php echo h($knowyournumber['Knowyournumber']['weight']); ?>&nbsp;</td>

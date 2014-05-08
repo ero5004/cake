@@ -20,12 +20,6 @@
 	<?= $this->GoogleMap->map($map_options); ?>
 
 
-<table>
-	<tr>
-		<th>id</th>
-		<th>lat</th>
-		<th>long</th>
-	</tr>
 <?php 
 	$count = 0;
 	foreach($chwConsultations as $chwConsultation) {
@@ -39,7 +33,6 @@
 		$diastolic = $chwConsultation['Knowyournumber']['diastolic'];
 		$bmi = $bmi = $this->CoFunctions->computeBMI($weight, $height);
 		
-		echo "<tr><td>$count</td><td>$latitude</td><td>$longitude</td></tr>";
 		
 		$markerTitle = $id . " - " . $time;
 		$windowText = "<table><tr><td>Height</td><td>$height</td><tr>".
@@ -53,6 +46,5 @@
 		$count++;
 	}
 ?>
-</table>
 
 </div>
