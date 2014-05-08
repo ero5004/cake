@@ -5,8 +5,6 @@
 			<th><?php echo $this->Paginator->sort('customerId'); ?></th>
 			<th><?php echo $this->Paginator->sort('chwId'); ?></th>
 			<th><?php echo $this->Paginator->sort('time'); ?></th>
-			<th><?php echo $this->Paginator->sort('latitude'); ?></th>
-			<th><?php echo $this->Paginator->sort('longitude'); ?></th>
 			<th><?php echo $this->Paginator->sort('height'); ?></th>
 			<th><?php echo $this->Paginator->sort('weight'); ?></th>
 			<th><?php echo $this->Paginator->sort('systolic'); ?></th>
@@ -19,8 +17,6 @@
 		<td><?php echo h($knowyournumber['Knowyournumber']['customerId']); ?>&nbsp;</td>
 		<td><?php echo h($knowyournumber['Knowyournumber']['chwId']); ?>&nbsp;</td>
 		<td><?php echo h($knowyournumber['Knowyournumber']['time']); ?>&nbsp;</td>
-		<td><?php echo h($knowyournumber['Knowyournumber']['latitude']); ?>&nbsp;</td>
-		<td><?php echo h($knowyournumber['Knowyournumber']['longitude']); ?>&nbsp;</td>
 		<td><?php echo h($knowyournumber['Knowyournumber']['height']); ?>&nbsp;</td>
 		<td><?php echo h($knowyournumber['Knowyournumber']['weight']); ?>&nbsp;</td>
 		<td><?php echo h($knowyournumber['Knowyournumber']['systolic']); ?>&nbsp;</td>

@@ -115,8 +115,8 @@ class KnowyournumbersController extends AppController {
 	}
 	
 	public function consultationMap($chwId = null) {
-		$this->Knowyournumber->recursive = 0;
-		$this->set('knowyournumbers', $this->Paginator->paginate());
+		$options = array('conditions' => array('Knowyournumber.chwId' => $chwId));
+		$this->set('chwConsultations', $this->Knowyournumber->find('all', $options));
 	}
 	
 }
