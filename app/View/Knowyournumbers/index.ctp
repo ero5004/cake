@@ -38,7 +38,7 @@
 			?>
 		</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $knowyournumber['Knowyournumber']['id'])); ?>
+			<?php echo $this->Html->link(__('View'), array('action' => 'viewPatient', $knowyournumber['Knowyournumber']['customerId'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $knowyournumber['Knowyournumber']['id'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $knowyournumber['Knowyournumber']['id']), null, __('Are you sure you want to delete # %s?', $knowyournumber['Knowyournumber']['id'])); ?>
 		</td>
