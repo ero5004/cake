@@ -82,7 +82,7 @@ p {
 }
 #header h1 {
 	line-height:20px;
-	background: #003d4c url('../img/cake.icon.png') no-repeat left;
+	background: #003d4c url('../img/mashavulogo.png') no-repeat left;
 	color: #fff;
 	padding: 0px 30px;
 }
@@ -117,8 +117,8 @@ p {
 div.form,
 div.index,
 div.view {
-	float:right;
-	width:76%;
+	/*float:right;*/
+	/*width:76%;*/
 	border-left:1px solid #666;
 	padding:10px 2%;
 }

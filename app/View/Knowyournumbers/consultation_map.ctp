@@ -6,8 +6,8 @@
 <?php
   $map_options = array(
     'id'         => 'map_canvas',
-    'width'      => '800px',
-    'height'     => '600px',
+    'width'      => '1000px',
+    'height'     => '800px',
     'localize'   => false,
     'zoom'       => 13,
 	'address'    => 'San Francisco, CA',
@@ -47,4 +47,11 @@
 	}
 ?>
 
+</div>
+<div class="actions">
+	<h3><?php echo __('Actions'); ?></h3>
+	<ul>
+		<li><?php echo $this->Html->link(__('List Knowyournumbers'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Knowyournumber'), array('action' => 'add')); ?> </li>
+	</ul>
 </div>
