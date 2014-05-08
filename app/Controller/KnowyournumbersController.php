@@ -48,7 +48,7 @@ class KnowyournumbersController extends AppController {
 
 	
 	public function viewPatient($patientId = null) {
-		$options = array('conditions' => array('Knowyournumber.' . $this->Knowyournumber->customerId => $patientId));
+		$options = array('conditions' => array('Knowyournumber.customerId' => $patientId));
 		$this->set('patientRecords', $this->Knowyournumber->find('all', $options));
 	}
 	
