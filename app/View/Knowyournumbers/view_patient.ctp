@@ -72,28 +72,29 @@
 		$records = $patientRecords;
 		$this->CoFunctions->sort_objs_by_date($records);//sort patient records object array
 		//echo '~>> ' . end($records)['Knowyournumber']['time'] . "\n";
+		$record = end($records);
 	?>
 	<table>
 	<tr>
-		<td><?php echo '<b>'.h('Record for Patient '. end($records)['Knowyournumber']['customerId']).'</b>'; ?>&nbsp;</td>
+		<td><?php echo '<b>'.h('Record for Patient '. $record['Knowyournumber']['customerId']).'</b>'; ?>&nbsp;</td>
 	</tr>
 	<tr>
-		<td><?php echo h('Final time = ' . end($records)['Knowyournumber']['time']); ?>&nbsp;</td>
+		<td><?php echo h('Final time = ' . $record['Knowyournumber']['time']); ?>&nbsp;</td>
 	</tr>
 	<tr>
-		<td><?php $weight = end($records)['Knowyournumber']['weight'];
+		<td><?php $weight = $record['Knowyournumber']['weight'];
 				  echo h('Weight = ' . $weight); ?>&nbsp;</td>
 	</tr>
 	<tr>
-		<td><?php $height = end($records)['Knowyournumber']['height'];
+		<td><?php $height = $record['Knowyournumber']['height'];
 				  $bmi = $this->CoFunctions->computeBMI($weight, $height);
 				  echo h('BMI = ' . $bmi); ?>&nbsp;</td>
 	</tr>
 	<tr>
-		<td><?php echo h('Systolic = ' . end($records)['Knowyournumber']['systolic']); ?>&nbsp;</td>
+		<td><?php echo h('Systolic = ' . $record['Knowyournumber']['systolic']); ?>&nbsp;</td>
 	</tr>
 	<tr>
-		<td><?php echo h('Diastolic = ' . end($records)['Knowyournumber']['diastolic']); ?>&nbsp;</td>
+		<td><?php echo h('Diastolic = ' . $record['Knowyournumber']['diastolic']); ?>&nbsp;</td>
 	</tr>
 	</table>
 </div>
