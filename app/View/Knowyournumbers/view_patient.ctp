@@ -83,11 +83,14 @@
 	</tr>
 	<tr>
 		<td><?php $weight = $record['Knowyournumber']['weight'];
-				  echo h('Weight = ' . $weight); ?>&nbsp;</td>
+				  echo h('Weight = ' . $weight. ' kg'); ?>&nbsp;</td>
 	</tr>
 	<tr>
 		<td><?php $height = $record['Knowyournumber']['height'];
-				  $bmi = $this->CoFunctions->computeBMI($weight, $height);
+				  echo h('Height = ' . $height. ' cm'); ?>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><?php $bmi = $this->CoFunctions->computeBMI($weight, $height);
 				  echo h('BMI = ' . $bmi); ?>&nbsp;</td>
 	</tr>
 	<tr>
