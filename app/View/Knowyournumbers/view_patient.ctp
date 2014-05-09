@@ -1,5 +1,5 @@
 
-<?= $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false); ?>
+<?php echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false); ?>
 <div style="width: 1000px">
 <div class="knowyournumbers view" style="float:left" width="500px">
 <h2><?php echo __('Knowyournumber'); ?></h2>
