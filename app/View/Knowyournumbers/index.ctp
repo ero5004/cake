@@ -1,5 +1,5 @@
 <div class="knowyournumbers index">
-	<h2><?php echo __('Knowyournumbers'); ?></h2>
+	<h2><?php echo __('All Consultations'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('customerId'); ?></th>
@@ -58,6 +58,6 @@
 <!--<div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Knowyournumber'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('New Consultation'), array('action' => 'add')); ?></li>
 	</ul>
 </div>-->

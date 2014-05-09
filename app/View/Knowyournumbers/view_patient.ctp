@@ -100,8 +100,8 @@
 <div class="actions" style="float: right; width: 500px;">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('List Knowyournumbers'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Knowyournumber'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('All Consultations'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Consultations'), array('action' => 'add')); ?> </li>
 	</ul>
 </div>
 </div>
