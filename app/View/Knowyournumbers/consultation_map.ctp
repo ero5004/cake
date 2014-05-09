@@ -1,7 +1,7 @@
 <h3>Map of Consultations</h3>
 
-<?= $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false); ?>
-<?= $this->Html->script('http://maps.google.com/maps/api/js?sensor=false', false); ?>
+<?php echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false); ?>
+<?php echo $this->Html->script('http://maps.google.com/maps/api/js?sensor=false', false); ?>
 
 <?php
   $map_options = array(
@@ -17,7 +17,7 @@
 ?>
 <div style="width: 1300px;">
 	<div style="float:left; width: 1000px;">
-		<?= $this->GoogleMap->map($map_options); ?>
+		<?php echo $this->GoogleMap->map($map_options); ?>
 
 
 	<?php 
