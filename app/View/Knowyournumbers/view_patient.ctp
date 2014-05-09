@@ -1,7 +1,7 @@
 
 <?= $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false); ?>
 
-<div class="knowyournumbers view">
+<div class="knowyournumbers view"; style="float:left"; width="500px";>
 <h2><?php echo __('Knowyournumber'); ?></h2>
 	<!--<dl>
 		<dt><?php echo __('CustomerId'); ?></dt>
@@ -65,6 +65,36 @@
 			$chartBp->div('chartBp_div');
 			$this->GoogleCharts->createJsChart($chartBp); 
 		?>
+	</div>
+	<div id='present_stats'; style="float:right"; width="100px";>
+		<?php 
+			$records = $patientRecords;
+			$this->CoFunctions->sort_objs_by_date($records);//sort patient records object array
+			//echo '~>> ' . end($records)['Knowyournumber']['time'] . "\n";
+		?>
+		<table>
+		<tr>
+			<td><?php echo h('Record for Patient '. end($records)['Knowyournumber']['customerId']); ?>&nbsp;</td>
+		</tr>
+		<tr>
+			<td><?php echo h('Final time = ' . end($records)['Knowyournumber']['time']); ?>&nbsp;</td>
+		</tr>
+		<tr>
+			<td><?php $weight = end($records)['Knowyournumber']['weight'];
+					  echo h('Weight = ' . $weight); ?>&nbsp;</td>
+		</tr>
+		<tr>
+			<td><?php $height = end($records)['Knowyournumber']['height'];
+					  $bmi = $this->CoFunctions->computeBMI($weight, $height);
+					  echo h('BMI = ' . $bmi); ?>&nbsp;</td>
+		</tr>
+		<tr>
+			<td><?php echo h('Systolic = ' . end($records)['Knowyournumber']['systolic']); ?>&nbsp;</td>
+		</tr>
+		<tr>
+			<td><?php echo h('Diastolic = ' . end($records)['Knowyournumber']['diastolic']); ?>&nbsp;</td>
+		</tr>
+		</table>
 	</div>
 </div>
 <div class="actions">

@@ -62,17 +62,20 @@ class KnowyournumbersController extends AppController {
 		return $bmi;
 	}
 	
-	public function viewPatient($patientId = null) {
+	public function viewPatient($patientId = null) {		
+		//prepare patient record object array
 		$options = array('conditions' => array('Knowyournumber.customerId' => $patientId));
 		$patientRecords = $this->Knowyournumber->find('all', $options);
 		
+		// Prepare the consultation map (BMI vs time)
 		$chartBmi = new GoogleCharts();
 		$chartBmi->type("LineChart");
 		$chartBmi->options(array('title' => "BMI over time"));
 		$chartBmi->columns(array('time' => array('type' => 'string', 'label' => 'Time'), 
 			'bmi' => array('type' => 'number', 'label' => 'BMI')
 			));
-			
+		
+		// Prepare the consultation map (BP vs time)
 		$chartBp = new GoogleCharts();
 		$chartBp->type("LineChart");
 		$chartBp->options(array('title' => "Blood Pressure over time"));
@@ -81,7 +84,7 @@ class KnowyournumbersController extends AppController {
 			'diastolic' => array('type' => 'number', 'label' => 'BP - diastolic')
 			));
 		
-		
+		// Extract data from patient records object array
 		foreach ($patientRecords as $patientRecord)
 		{
 			$time = $patientRecord['Knowyournumber']['time'];
@@ -98,7 +101,8 @@ class KnowyournumbersController extends AppController {
 		
 		$this->set(compact('chartBmi'));
 		$this->set(compact('chartBp'));		
-		$this->set('patientRecords', $patientRecords);
+		$this->set('patientRecords', $patientRecords);//set view's internal copy of patient records
+		//$this->set('id',$patientId);//pass in current id into view as well
 	}
 	
 /**

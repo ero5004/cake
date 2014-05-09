@@ -20,6 +20,37 @@ App::uses('Helper', 'View');
 class CoFunctionsHelper extends Helper {
 	 
 	 /*
+	 * Sub-routine that serves as a sort of comparator.
+	 * To used in conjunction with "usort(...,"cmp")"
+	 * usort($your_data, "cmp");
+	 */
+	function cmp($a, $b){
+		return strcmp($a->time, $b->time);
+	}
+	
+	//compares 2 date variable objects
+	function cmp_dates($a, $b){
+		//print_r($a);
+		//echo ('~>> ' . $a['Knowyournumber']['time']);
+		$a_t = strtotime($a['Knowyournumber']['time']); 
+		$b_t = strtotime($b['Knowyournumber']['time']); 
+		if($a_t == $b_t){
+			return 0;
+		}else if($a_t < $b_t){
+			return -1;
+		}else{ // a_t > b_t
+			return 1;
+		}		
+	}
+	
+	// Sorts an array of objects by their date field if they have it
+	function sort_objs_by_date($objs){
+		//echo h($objs);
+		//usort($objs, 'cmp_dates');
+		usort($objs, array($this, "cmp_dates"));
+	}
+	
+	 /*
 	  * Computes the Body Mass Index (BMI) given mass & height values.  This function 
 	  * assumes that mass is provided as a weight in kilograms & height is in centimeters.
 	  * 
@@ -46,7 +77,14 @@ class CoFunctionsHelper extends Helper {
 		 */
 		return $bmi;
 	 }
-
+	 
+	 //old sub-routine to get last item in array (deprecated but kept for legacy debugging purposes)
+	 function getLastArrItem($records){
+		$arrlength=count($records);//get length of array
+		$last_item = $records[$arrlength-1]['Knowyournumber']['time'];//equivalent to end($array);
+		echo '~>> ' . $last_item . "\n";
+		return $last_item;
+	}
 }
 
 
